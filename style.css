@@ -1,0 +1,249 @@
+:root {
+  color-scheme: dark;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0b2f26;
+  color: #f5eedb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(44 105 75 / 45%), transparent 58%),
+    #123d32;
+}
+
+button,
+audio {
+  font: inherit;
+}
+
+.soundscape {
+  width: min(100% - 2rem, 760px);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 8vw, 5.5rem) 0 1.5rem;
+}
+
+.page-header {
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.eyebrow,
+.caption-label,
+.player-prompt {
+  color: #e7deb8;
+  font-size: 0.90rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.eyebrow {
+  margin: 0 0 0.8rem;
+}
+
+h1 {
+  margin: 0;
+  color: #ddc04f;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 500;
+  letter-spacing: -0.040em;
+  line-height: 1.05;
+}
+
+.intro {
+  max-width: 36rem;
+  margin: 1rem auto 0;
+  color: #e0e9dc;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.listening-card {
+  overflow: hidden;
+  border: 1px solid rgb(235 240 215 / 18%);
+  border-radius: 1.25rem;
+  background: #f6f0df;
+  box-shadow: 0 1.5rem 4rem rgb(5 26 19 / 28%);
+  color: #173c30;
+}
+
+.scene {
+  position: relative;
+  height: clamp(300px, 60vw, 500px);
+  margin: 0;
+  overflow: hidden;
+  background: #d7d2bd;
+}
+
+.scene::after {
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(transparent, rgb(8 25 19 / 68%));
+  content: "";
+  pointer-events: none;
+}
+
+.scene img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.scene img.scene-enter {
+  animation: scene-enter 500ms ease both;
+}
+
+.scene-caption {
+  position: absolute;
+  z-index: 1;
+  right: 1.5rem;
+  bottom: 1.35rem;
+  left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  color: white;
+  text-shadow: 0 1px 8px rgb(0 0 0 / 35%);
+}
+
+.caption-label {
+  color: #f2d45c;
+  font-size: 0.65rem;
+}
+
+#sceneName {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.7rem, 5vw, 2.3rem);
+}
+
+.player-section {
+  padding: clamp(1.25rem, 5vw, 2rem);
+}
+
+.player-prompt {
+  margin: 0 0 0.65rem;
+  color: #617767;
+  letter-spacing: 0.1em;
+}
+
+audio {
+  display: block;
+  width: 100%;
+  height: 42px;
+  accent-color: #376d4b;
+  color-scheme: light;
+}
+
+.scene-nav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.scene-button {
+  display: flex;
+  min-height: 3.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #d5dacb;
+  border-radius: 0.7rem;
+  background: transparent;
+  color: #234638;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.scene-button:hover {
+  transform: translateY(-2px);
+  border-color: #64836a;
+}
+
+.scene-button:focus-visible {
+  outline: 3px solid #b49925;
+  outline-offset: 3px;
+}
+
+.scene-button.is-active {
+  border-color: #315d43;
+  background: #315d43;
+  color: #fff9e9;
+}
+
+.button-time {
+  color: #728575;
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.is-active .button-time {
+  color: #f2d45c;
+}
+
+.playback-message {
+  min-height: 1.25em;
+  margin: 0.85rem 0 0;
+  color: #617767;
+  font-size: 0.82rem;
+}
+
+.page-footer {
+  padding-top: 1.5rem;
+  color: #bdcdbb;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@keyframes scene-enter {
+  from {
+    opacity: 0.65;
+    transform: scale(1.015);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 520px) {
+  .scene-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .scene {
+    height: 72vw;
+    min-height: 280px;
+    max-height: 410px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
